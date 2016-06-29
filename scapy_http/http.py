@@ -115,7 +115,7 @@ def _self_build(obj, field_pos_list=None):
         else:
           separator = newline
         # Add the field into the packet
-        p = f.addfield(obj, p, val + separator)
+        p = f.addfield(obj, p, '{}{}'.format(val,separator))
     # The packet might be empty, and in that case it should stay empty.
     if p:
       # Add an additional line after the last header
