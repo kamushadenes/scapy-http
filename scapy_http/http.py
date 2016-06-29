@@ -15,11 +15,17 @@ def _canonicalize_header(name):
     return name.strip().lower()
 
 def _parse_headers(s):
-    headers = s.split("\r\n")
+    try:
+        headers = s.split("\r\n")
+    except:
+        headers = s.split('\r\n'.encode())
     headers_found = {}
     for header_line in headers:
         try:
-            key, value = header_line.split(':', 1)
+            try:
+                key, value = header_line.split(':', 1)
+            except:
+                key, value = header_line.split(':'.encode(), 1)
         except:
             continue
         headers_found[_canonicalize_header(key)] = header_line.strip()
