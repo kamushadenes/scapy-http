@@ -88,7 +88,10 @@ def _get_field_value(obj, name):
         except AttributeError as e:
             # If we don't provide a parsed representation
             val.append(headers[header_name])
-    return '\r\n'.join(val)
+    try:
+        return '\r\n'.join(val)
+    except:
+        return '\r\n'.join(val.decode())
 
 
 def _self_build(obj, field_pos_list=None):
