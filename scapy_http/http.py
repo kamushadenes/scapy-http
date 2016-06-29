@@ -91,7 +91,7 @@ def _get_field_value(obj, name):
     try:
         return '\r\n'.join(val)
     except:
-        return '\r\n'.join(val.decode())
+        return '\r\n'.join([v.decode() for v in val])
 
 
 def _self_build(obj, field_pos_list=None):
